@@ -11,6 +11,12 @@
  * @method   getDetails
  */
 
+var Spell = function(name, cost, description){
+  this.name = name;
+  this.cost = cost;
+  this.description = description;
+
+
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -19,6 +25,13 @@
    * @return {string} details containing all of the spells information.
    */
 
+  this.getDetails = function(){
+    var deets = "";
+    deets = this.name + "||" + this.cost + "||" + this.description;
+    return deets;
+  };
+
+};
 /**
  * A spell that deals damage.
  * We want to keep this code DRY (Don't Repeat Yourself).
