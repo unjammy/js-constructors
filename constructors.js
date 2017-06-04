@@ -165,4 +165,26 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+
+   this.invoke = function(spell, target){
+
+    if( !(spell instanceof Spell || spell instanceof DamageSpell) ){
+      return false;
+    } else if ( !(spell.cost <= this.mana) ){
+      return false;
+    } else if (spell instanceof DamageSpell) {
+      if( target instanceof Spellcaster){
+        this.spendMana(spell.cost);
+        target.inflictDamage(spell.damage);
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      this.spendMana(spell.cost);
+      return true;
+    }
+
+   };
+
  };
