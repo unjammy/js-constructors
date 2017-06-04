@@ -110,9 +110,7 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
   this.inflictDamage = function(damage) {
 
     if( !((this.health - damage) > 0) ){
-      console.log("im abour to die ", this.isAlive);
       this.isAlive = !this.isAlive;
-      console.log("i died.. ", this.isAlive);
       this.health = 0;
     } else {
       this.health = this.health - damage;
