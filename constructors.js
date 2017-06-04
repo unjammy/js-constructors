@@ -107,15 +107,15 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
    * @param  {number} damage  Amount of damage to deal to the spellcaster
    */
 
-  var inflictDamage = function(damage) {
+  this.inflictDamage = function(damage) {
 
     if( !((this.health - damage) >= 0) ){
-      health = 0;
-      isAlive = false;
+      console.log("im abour to die ", this.isAlive);
+      this.isAlive = !this.isAlive;
+      this.health = 0;
     } else {
-      health -= damage;
+      this.health = this.health - damage;
     }
-
   };
 
   /**
@@ -127,6 +127,17 @@ DamageSpell.prototype = Object.create(Spell.prototype, {
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
+
+   this.spendMana = function(cost){
+
+    if( !(this.mana >= cost) ){
+      return false;
+    } else {
+      this.mana = this.mana - cost;
+      return true;
+    }
+
+   };
 
   /**
    * @method invoke
